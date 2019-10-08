@@ -25,21 +25,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        
-        // Make an object named 'synthesizer', which is an instance of the class 'AVSpeechSynthesizer'
-        let synthesizer = AVSpeechSynthesizer()
-        
-    
-        
-        // Make a string that contains what we want the coputer to say
-        let message = "I'm thinking of a number between 1 and 100, guess what it is."
-        
-        // Make an object named 'utterance' which is an instance of the class 'AVSpeechUtterance'.
-        var utterance = AVSpeechUtterance(string: message)
-        
-        // Speak the welcome message
-        synthesizer.speak(utterance)
+        speak(message: "I'm thinking of a number between 1 and 100, guess what it is.")
     }
 
 // This function will be used to check a guess.
@@ -50,13 +36,34 @@ class ViewController: UIViewController {
         let guessNumber = Int(guessText)!
         
         if guessNumber > targetNumber {
-            print("Guess lower next time")
+            
+            speak(message: "Guess lower next time")
+            
         } else if guessNumber < targetNumber {
-            print("Guess higher next time")
+            
+            speak(message: "Guess higher next time")
+            
         } else {
-            print("You are correct!")
+            
+            speak(message: "You are correct!")
+            
         }
     }
     
+// A function that will speak whatever message is provided
+    func speak(message: String) {
+        
+        // Make an object named 'synthesizer', which is an instance of the class 'AVSpeechSynthesizer'
+            let synthesizer = AVSpeechSynthesizer()
+            
+            // Make an object named 'utterance' which is an instance of the class 'AVSpeechUtterance'.
+            var utterance = AVSpeechUtterance(string: message)
+            
+            // Speak the welcome message
+            synthesizer.speak(utterance)
+        
+            // Print the massage
+            print(message)
+    }
 }
 
