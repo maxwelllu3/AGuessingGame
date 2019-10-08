@@ -48,6 +48,14 @@ class ViewController: UIViewController {
         // Obtain the guess value from the text field.
         let guessText = submittedGuess.text!
         let guessNumber = Int(guessText)!
+        
+        if guessNumber > targetNumber {
+            print("Guess lower next time")
+        } else if guessNumber < targetNumber {
+            print("Guess higher next time")
+        } else {
+            print("You are correct!")
+        }
     }
     
 }
